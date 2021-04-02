@@ -272,6 +272,9 @@ impl BackupRange {
                 }
                 match res {
                     Ok(w) => {
+                        BACKUP_RANGE_ERROR_VEC
+                            .with_label_values(&["succ"])
+                            .inc();
                         writer = w;
                     }
                     Err(e) => {
